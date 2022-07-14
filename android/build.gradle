@@ -38,7 +38,8 @@ android {
 
 dependencies {
    // implementation files('libs/kbzsdk.jar')
-    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    //implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation (name: 'kbzsdk-1.0.4', ext: 'aar')
     implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
