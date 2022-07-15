@@ -6,17 +6,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import io.flutter.embedding.engine.plugins.activity.ActivityAware;
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
-import io.flutter.plugin.common.EventChannel;
-import io.flutter.plugin.common.MethodCall;
-import io.flutter.plugin.common.MethodChannel;
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
-import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
-import io.flutter.plugin.common.BinaryMessenger;
-import io.flutter.plugin.common.PluginRegistry.Registrar;
-
 import com.kbzbank.payment.KBZPay;
 
 import org.json.JSONException;
@@ -24,6 +13,17 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Random;
+
+import io.flutter.embedding.engine.plugins.FlutterPlugin;
+import io.flutter.embedding.engine.plugins.activity.ActivityAware;
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
+import io.flutter.plugin.common.BinaryMessenger;
+import io.flutter.plugin.common.EventChannel;
+import io.flutter.plugin.common.MethodCall;
+import io.flutter.plugin.common.MethodChannel;
+import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
+import io.flutter.plugin.common.MethodChannel.Result;
+import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 /**
  * FlutterKbzPayPlugin
@@ -70,26 +70,6 @@ public class FlutterKbzPayPlugin implements MethodCallHandler, FlutterPlugin, Ac
         onAttachedToEngine(binding.getApplicationContext(), binding.getBinaryMessenger());
     }
 
-    @Override
-    public void onAttachedToActivity(ActivityPluginBinding activityPluginBinding) {
-        // TODO: your plugin is now attached to an Activity
-        this.activity = activityPluginBinding.getActivity();
-    }
-
-    @Override
-    public void onDetachedFromActivityForConfigChanges() {
-
-    }
-
-    @Override
-    public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding activityPluginBinding) {
-
-    }
-
-    @Override
-    public void onDetachedFromActivity() {
-
-    }
 
     private void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
         this.context = applicationContext;
@@ -184,5 +164,25 @@ public class FlutterKbzPayPlugin implements MethodCallHandler, FlutterPlugin, Ac
         double time = cal.getTimeInMillis() / 1000;
         Double d = Double.valueOf(time);
         return Integer.toString(d.intValue());
+    }
+
+    @Override
+    public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
+        this.activity = binding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivityForConfigChanges() {
+
+    }
+
+    @Override
+    public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding binding) {
+
+    }
+
+    @Override
+    public void onDetachedFromActivity() {
+        this.activity = null;
     }
 }
