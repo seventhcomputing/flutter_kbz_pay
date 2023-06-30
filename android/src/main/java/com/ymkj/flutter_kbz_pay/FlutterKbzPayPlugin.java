@@ -70,6 +70,26 @@ public class FlutterKbzPayPlugin implements MethodCallHandler, FlutterPlugin, Ac
         onAttachedToEngine(binding.getApplicationContext(), binding.getBinaryMessenger());
     }
 
+    @Override
+    public void onAttachedToActivity(ActivityPluginBinding activityPluginBinding) {
+        // TODO: your plugin is now attached to an Activity
+        this.activity = activityPluginBinding.getActivity();
+    }
+
+    @Override
+    public void onDetachedFromActivityForConfigChanges() {
+
+    }
+
+    @Override
+    public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding activityPluginBinding) {
+
+    }
+
+    @Override
+    public void onDetachedFromActivity() {
+
+    }
 
     private void onAttachedToEngine(Context applicationContext, BinaryMessenger messenger) {
         this.context = applicationContext;
@@ -164,25 +184,5 @@ public class FlutterKbzPayPlugin implements MethodCallHandler, FlutterPlugin, Ac
         double time = cal.getTimeInMillis() / 1000;
         Double d = Double.valueOf(time);
         return Integer.toString(d.intValue());
-    }
-
-    @Override
-    public void onAttachedToActivity(@NonNull ActivityPluginBinding binding) {
-        this.activity = binding.getActivity();
-    }
-
-    @Override
-    public void onDetachedFromActivityForConfigChanges() {
-
-    }
-
-    @Override
-    public void onReattachedToActivityForConfigChanges(@NonNull ActivityPluginBinding binding) {
-
-    }
-
-    @Override
-    public void onDetachedFromActivity() {
-        this.activity = null;
     }
 }
