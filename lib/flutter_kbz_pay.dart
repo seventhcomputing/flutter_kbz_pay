@@ -9,10 +9,10 @@ class FlutterKbzPay {
   static Stream<dynamic>? _streamPayStatus;
 
   //Test Channel
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
+  // static Future<String> get platformVersion async {
+  //   final String version = await _channel.invokeMethod('getPlatformVersion');
+  //   return version;
+  // }
 
   //Payment callback
   //Only return status code 1 || 2 || 3
