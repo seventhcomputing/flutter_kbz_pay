@@ -16,6 +16,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.BinaryMessenger;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
+import jdk.internal.org.jline.utils.Log;
 
 import com.kbzbank.payment.KBZPay;
 
@@ -151,6 +152,13 @@ public class FlutterKbzPayPlugin implements MethodCallHandler, FlutterPlugin, Ac
                 appid = params.getString("appid");
                 sign_key = params.getString("sign_key");
                 buildOrderInfo(prepayId, merch_code, appid, sign_key);
+                Log.info("startPay1 => ", mOrderInfo);
+                Log.info("startPay2 => ", mSign);
+                Log.info("startPay3 => ", signType);
+
+                System.out.println("startPay1 => " + mOrderInfo);
+                System.out.println("startPay2 => " + mSign);
+                System.out.println("startPay3 => " + signType);
                 KBZPay.startPay(this.activity, mOrderInfo, mSign, signType);
                 result.success("payStatus " + 0);
             } else {
