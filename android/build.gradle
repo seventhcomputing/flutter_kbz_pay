@@ -42,6 +42,6 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation (name: 'kbzsdk', ext: 'jar')
+    implementation (name: 'kbzsdk_1.1.0', ext: 'aar')
 }
 
